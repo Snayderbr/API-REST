@@ -71,25 +71,24 @@ async function seed() {
       where: { nombre: 'Película' },
     });
 
-    await Media.findOrCreate({
+    const [avatar, creada] = await Media.findOrCreate({
       where: { serial: 'AVT-001' },
       defaults: {
-        titulo: 'Avatar',
-        sinopsis:
-          'Un exmarine se encuentra en medio de un conflicto entre los habitantes de Pandora y los humanos que buscan explotar sus recursos.',
-        url: 'https://www.imdb.com/es/title/tt0499549/',
-        imagen:
-          'https://image.tmdb.org/t/p/original/fwmoeF44DXBk1tC30QFAiE0nwjT.jpg',
-        anio_estreno: 2009,
-        genero_id: genero.id,
-        director_id: director.id,
-        productora_id: productora.id,
-        tipo_id: tipo.id,
-      },
-    });
+      titulo: 'Avatar',
+      sinopsis:'Un exmarine se encuentra en medio de un conflicto entre los habitantes de Pandora y los humanos que buscan explotar sus recursos.',
+      url: 'https://www.imdb.com/es/title/tt0499549/',
+      imagen:'https://image.tmdb.org/t/p/original/fwmoeF44DXBk1tC30QFAiE0nwjT.jpg',
+      anio_estreno: 2009,
+      genero_id: genero.id,
+      director_id: director.id,
+      productora_id: productora.id,
+      tipo_id: tipo.id,
+  },
+});
 
-    console.log('✅ Datos iniciales cargados correctamente.');
-    console.log('🎬 Avatar agregada correctamente.');
+console.log('🎬 Avatar:', avatar.titulo);
+console.log('🆕 ¿Se creó ahora?:', creada);
+
 
     process.exit(0);
   } catch (error) {

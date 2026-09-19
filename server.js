@@ -9,11 +9,11 @@ async function iniciar() {
     await sequelize.authenticate();
     console.log('✅ Conexión a la base de datos establecida correctamente.');
 
-    const { Media } = require('./src/models');
-    console.log('🎬 Medias en la base de datos:', await Media.count());
-
     await sequelize.sync({ alter: true });
     console.log('✅ Modelos sincronizados con la base de datos.');
+
+    const { Media } = require('./src/models');
+    console.log('🎬 Medias en la base de datos:', await Media.count());
 
     app.listen(PORT, () => {
       console.log(`🚀 API escuchando en http://localhost:${PORT}`);

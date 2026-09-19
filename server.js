@@ -9,7 +9,7 @@ async function iniciar() {
     await sequelize.authenticate();
     console.log('✅ Conexión a la base de datos establecida correctamente.');
 
-    await sequelize.sync({ alter: true });
+    await sequelize.sync();
     console.log('✅ Modelos sincronizados con la base de datos.');
 
     const { Media } = require('./src/models');

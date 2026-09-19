@@ -11,7 +11,7 @@ const {
 
 async function seed() {
   try {
-    await sequelize.sync({ alter: true });
+    await sequelize.sync();
 
  
     const generos = [
